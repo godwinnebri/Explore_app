@@ -5,11 +5,11 @@ import 'package:iconsax/iconsax.dart';
 
 class CountryTile extends StatelessWidget {
   final String name;
-  final String number;
+  final String capital;
   final String image;
 
   const CountryTile(
-      {required this.name, required this.number, required this.image});
+      {required this.name, required this.capital, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class CountryTile extends StatelessWidget {
                         //number
                         Flexible(
                           child: AppText(
-                            text: number,
+                            text: capital,
                             size: 14,
                             color: Colors.grey,
                           ),

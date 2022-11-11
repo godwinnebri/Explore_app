@@ -1,16 +1,19 @@
-import 'package:explore_app/models/country_model.dart';
-import 'package:http/http.dart' as http;
+// import 'dart:convert';
 
-class RemoteService {
-  Future<List<CountryModel>?> getCountries() async {
-    var client = http.Client();
+// import 'package:explore_app/models/country_model.dart';
+// import 'package:http/http.dart' as http;
 
-    var uri = Uri.parse('https://restcountries.com/v3.1/all');
-    var response = await client.get(uri);
+// class RemoteService {
+//   Future<List<CountryModel>?> getCountries() async {
+//     var client = http.Client();
 
-    if (response.statusCode == 200) {
-      var json = response.body;
-      final countryModel = countryModelFromJson(json);
-    }
-  }
-}
+//     var uri = Uri.parse('https://restcountries.com/v3.1/all');
+//     var response = await client.get(uri);
+//     print(response.body);
+
+//     if (response.statusCode == 200) {
+//       var json = jsonDecode(response.body);
+//       final countryModel = countryModelFromJson(json);
+//     }
+//   }
+// }

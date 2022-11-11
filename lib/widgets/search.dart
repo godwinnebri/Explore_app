@@ -1,5 +1,6 @@
 import 'package:explore_app_1/colors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class SearchInput extends StatelessWidget {
   final TextEditingController searchController;
@@ -23,18 +24,19 @@ class SearchInput extends StatelessWidget {
         },
         decoration: InputDecoration(
           prefixIcon: const Icon(
-            Icons.search,
+            Iconsax.search_normal_1,
             color: AppColors.grey500,
           ),
           filled: true,
-          fillColor: Colors.grey.shade100,
+          fillColor: AppColors.grey100,
           hintText: hintText,
           hintStyle:
               const TextStyle(color: AppColors.grey500, fontFamily: 'Axiforma'),
           contentPadding:
               const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white, width: 0.0),
+          enabledBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: Colors.white.withOpacity(0), width: 0.0),
             borderRadius: BorderRadius.all(Radius.circular(4.0)),
           ),
           focusedBorder: const OutlineInputBorder(

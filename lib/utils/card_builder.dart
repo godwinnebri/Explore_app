@@ -1,3 +1,5 @@
+import 'package:explore_app/models/country_model.dart';
+import 'package:explore_app/services/remote_service.dart';
 import 'package:explore_app/widgets/country_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -13,18 +15,26 @@ class CountryBuilder extends StatefulWidget {
 
 class _CountryBuilderState extends State<CountryBuilder> {
   String url = 'https://restcountries.com/v3.1/all';
-
-  void getJsonData() async {
-    Response response = await get(Uri.parse(url));
-    print(response.statusCode);
-    List data = jsonDecode(response.body);
-  }
+  late List<CountryModel>? _countryModel = [];
+  var isLoaded = false;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    getJsonData();
+    getData();
+  }
+
+  void getData() async {
+    _countryModel = (await RemoteService().getCountries())!;
+
+    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
+
+    // if (_countryModel != null) {
+    //   setState(() {
+    //     isLoaded = true;
+    //   });
+    // }
+    // print(isLoaded);
   }
 
   @override
@@ -35,9 +45,9 @@ class _CountryBuilderState extends State<CountryBuilder> {
         shrinkWrap: true,
         //physics: const NeverScrollableScrollPhysics(),
         //itemCount: widget.contacts.length,
-        itemCount: 10,
+        itemCount: _countryModel!.length,
         itemBuilder: (context, index) {
-          return CountryTile(
+          return const CountryTile(
               // name: widget.contacts[index].name,
               // image: widget.contacts[index].image,
               // number: widget.contacts[index].number,

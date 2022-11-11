@@ -1,3 +1,4 @@
+import 'package:explore_app/views/detail.dart';
 import 'package:explore_app/views/home.dart';
 import 'package:flutter/material.dart';
 

@@ -1,6 +1,7 @@
-import 'package:explore_app/views/detail.dart';
-import 'package:explore_app/views/home.dart';
+import 'package:explore_app_1/core/providers.dart';
+import 'package:explore_app_1/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,15 +10,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: AppProviders.providers,
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomeScreen(),
       ),
-      home: const HomeScreen(),
     );
   }
 }

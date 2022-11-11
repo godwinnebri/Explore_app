@@ -1,4 +1,4 @@
-import 'package:explore_app/colors/app_colors.dart';
+import 'package:explore_app_1/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SearchInput extends StatelessWidget {

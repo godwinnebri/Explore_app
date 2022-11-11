@@ -1,4 +1,4 @@
-import 'package:explore_app_1/constants.dart';
+import 'package:explore_app_1/colors/app_colors.dart';
 import 'package:explore_app_1/core/api_provider.dart';
 import 'package:explore_app_1/screens/detail_scren.dart';
 import 'package:explore_app_1/widgets/filter_container.dart';
@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
-import '../colors/app_colors.dart';
+import '../theme/theme_config.dart';
 import '../widgets/gap.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     final apiProvider = Provider.of<ApiProvider>(context, listen: false);
     apiProvider.fetchCountries();
@@ -35,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
     var model = apiProvider.countryList;
     model.sort((a, b) => a.name!.common!.compareTo(b.name!.common!));
     return Scaffold(
-      backgroundColor: KSecondaryColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
@@ -46,33 +44,40 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RichText(
-                          text: const TextSpan(children: [
-                        TextSpan(
-                            text: 'Explore',
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontFamily: 'ElsieSwashCaps',
-                                color: KPrimaryColor,
-                                fontWeight: FontWeight.w900)),
-                        TextSpan(
-                            text: '.',
-                            style: TextStyle(
-                                fontSize: 30,
-                                color: Color(0xffFF6C00),
-                                fontWeight: FontWeight.w900))
-                      ])),
-                      const Icon(
-                        Icons.light_mode_outlined,
-                        color: KPrimaryColor,
+//logo
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: const [
+                          Text('Explore',
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontFamily: 'ElsieSwashCaps',
+                                  fontWeight: FontWeight.w900)),
+                          Text('.',
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  color: AppColors.primaryColor,
+                                  fontWeight: FontWeight.w900)),
+                        ],
+                      ),
+
+                      InkWell(
+                        onTap: () {
+                          currentTheme.switchTheme();
+                        },
+                        child: darkActive
+                            ? const Icon(Iconsax.moon)
+                            : const Icon(
+                                Iconsax.sun_1,
+                              ),
                       )
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const Gap(h: 30),
                   SearchInput(
                       searchController: searchController,
                       hintText: "Search country"),
-                  SizedBox(height: 15),
+                  const Gap(h: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
@@ -83,6 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Filter(filterText: 'Filter', icon: Iconsax.filter)
                     ],
                   ),
+                  const Gap(h: 12),
                 ],
               ),
               Expanded(
@@ -90,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? Center(
                         child: Column(
                         children: const [
+                          Gap(h: 40),
                           CircularProgressIndicator(),
                           Gap(h: 14),
                           AppText(
@@ -112,30 +119,25 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             },
                             child: ListTile(
-                              leading: Container(
+                              leading: SizedBox(
                                 height: 50,
                                 width: 50,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Image.network(
                                     "${model.elementAt(index).flags?.png}",
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.fitHeight,
                                   ),
                                 ),
                               ),
-                              title: Text(
-                                "${model.elementAt(index).name?.common}",
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    color: KPrimaryColor,
-                                    fontWeight: FontWeight.w700),
+                              title: AppText(
+                                text: "${model.elementAt(index).name?.common}",
+                                size: 18,
+                                weight: FontWeight.w700,
                               ),
-                              subtitle: Text(
-                                "${model.elementAt(index).capital}",
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    color: KPrimaryColor,
-                                    fontWeight: FontWeight.normal),
+                              subtitle: AppText(
+                                text: "${model.elementAt(index).capital}",
+                                size: 18,
                               ),
                             ),
                           );

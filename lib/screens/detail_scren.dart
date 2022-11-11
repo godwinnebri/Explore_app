@@ -1,9 +1,11 @@
 import 'package:card_swiper/card_swiper.dart';
-import 'package:explore_app_1/constants.dart';
+import 'package:explore_app_1/widgets/texts/apptext.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
 import '../core/api_provider.dart';
+import '../widgets/gap.dart';
 
 class DetailScreen extends StatefulWidget {
   var index;
@@ -14,13 +16,6 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   final apiProvider = Provider.of<ApiProvider>(context, listen: false);
-  //   apiProvider.fetchCountries();
-  // }
-
   @override
   Widget build(BuildContext context) {
     final apiProvider = Provider.of<ApiProvider>(context);
@@ -28,209 +23,218 @@ class _DetailScreenState extends State<DetailScreen> {
     List<String> imageList = [
       "${model.flags?.png}",
       "${model.coatOfArms?.png}",
-      // "${model.maps?.googleMaps}"
     ];
     return Scaffold(
-      backgroundColor: KSecondaryColor,
-      appBar: AppBar(
-        backgroundColor: KSecondaryColor,
-        elevation: 0,
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Icon(
-            Icons.arrow_back,
-            color: KPrimaryColor,
-            size: 35,
-          ),
-        ),
-        centerTitle: true,
-        title: Text('${model.name?.common}',
-            style: TextStyle(
-                fontSize: 25,
-                color: KPrimaryColor,
-                fontWeight: FontWeight.w700)),
-      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
-          child: ListView(
+          child: Column(
             children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.22,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Swiper(
-                  itemCount: imageList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.network(
-                        imageList[index],
-                        fit: BoxFit.fill,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Iconsax.arrow_left,
+                      //color: KPrimaryColor,
+                      size: 30,
+                    ),
+                  ),
+                  AppText(
+                    text: '${model.name?.common}',
+                    size: 20,
+                    weight: FontWeight.bold,
+                  ),
+                  const Gap(
+                    w: 30,
+                  )
+                ],
+              ),
+              const Gap(h: 20),
+              Expanded(
+                child: ListView(
+                  children: [
+                    Container(
+                      height: 200,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Swiper(
+                        itemCount: imageList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.network(
+                              imageList[index],
+                              fit: BoxFit.fill,
+                            ),
+                          );
+                        },
+                        pagination: const SwiperPagination(),
+                        control: const SwiperControl(),
                       ),
-                    );
-                  },
-                  pagination: SwiperPagination(),
-                  control: SwiperControl(),
-                ),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  children: [
-                    Text('Population: ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.w700)),
-                    Text('${model.population}',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.normal)),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  children: [
-                    Text('Region: ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.w700)),
-                    Text('${model.region}',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.normal)),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  children: [
-                    Text('Capital: ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.w700)),
-                    Text('${model.capital}',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.normal)),
-                  ],
-                ),
-              ),
-              SizedBox(height: 15),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  children: [
-                    Text('Official language: ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.w700)),
-                    Text('${model.languages?.eng}',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.normal)),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  children: [
-                    Text('Area: ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.w700)),
-                    Text('${model.area}',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.normal)),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  children: [
-                    Text('Currency: ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.w700)),
-                    Text('${model.currencies}',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.normal)),
-                  ],
-                ),
-              ),
-              SizedBox(height: 15),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  children: [
-                    Text('Time zone: ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.w700)),
-                    Text('${model.timezones}',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.normal)),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  children: [
-                    Text('Dialing code: ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.w700)),
-                    Text('${model.idd?.root}',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.normal)),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  children: [
-                    Text('Driving side: ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.w700)),
-                    Text('${model.car?.side}',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: KPrimaryColor,
-                            fontWeight: FontWeight.normal)),
+                    ),
+                    const Gap(h: 20),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppText(
+                            text: 'Population: ',
+                            size: 16,
+                            weight: FontWeight.bold,
+                          ),
+                          DetailText(
+                            text: '${model.population}',
+                            size: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppText(
+                            text: 'Region: ',
+                            size: 16,
+                            weight: FontWeight.bold,
+                          ),
+                          DetailText(
+                            text: '${model.region}',
+                            size: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppText(
+                            text: 'Capital: ',
+                            size: 16,
+                            weight: FontWeight.bold,
+                          ),
+                          DetailText(
+                            text: '${model.capital}',
+                            size: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Gap(h: 15),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppText(
+                            text: 'Official language: ',
+                            size: 16,
+                            weight: FontWeight.bold,
+                          ),
+                          DetailText(
+                            text: '${model.languages?.eng}',
+                            size: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppText(
+                            text: 'Area: ',
+                            size: 16,
+                            weight: FontWeight.bold,
+                          ),
+                          DetailText(
+                            text: '${model.area}',
+                            size: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppText(
+                            text: 'Currency: ',
+                            size: 16,
+                            weight: FontWeight.bold,
+                          ),
+                          DetailText(
+                            text: '${model.currencies} ',
+                            size: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Gap(h: 15),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppText(
+                            text: 'Time zone: ',
+                            size: 16,
+                            weight: FontWeight.bold,
+                          ),
+                          DetailText(
+                            text: '${model.timezones}',
+                            size: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppText(
+                            text: 'Dialing code: ',
+                            size: 16,
+                            weight: FontWeight.bold,
+                          ),
+                          DetailText(
+                            text: '${model.idd?.root}',
+                            size: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppText(
+                            text: 'Driving side: ',
+                            size: 16,
+                            weight: FontWeight.bold,
+                          ),
+                          DetailText(
+                            text: '${model.car?.side}',
+                            size: 16,
+                            weight: FontWeight.normal,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

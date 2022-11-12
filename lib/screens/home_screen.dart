@@ -19,14 +19,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  TextEditingController searchController = TextEditingController();
-
   @override
   void initState() {
     super.initState();
     final apiProvider = Provider.of<ApiProvider>(context, listen: false);
     apiProvider.fetchCountries();
   }
+
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -74,9 +74,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   const Gap(h: 30),
+
+                  //search
                   SearchInput(
-                      searchController: searchController,
-                      hintText: "Search country"),
+                    hintText: 'Search country',
+                    //onChanged: searchCountries,
+                  ),
+
                   const Gap(h: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

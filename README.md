@@ -28,7 +28,7 @@ The design is built to allow users use the app easily. The design is accessible 
  - Map integration to allow users explore a country virtually
  
  ## Link to APK
- [Click here to download APK file]()
+ [Click here to download APK file](https://drive.google.com/file/d/1Lkofys1aKaSK6lMkRAPe3kpJOjsoYfFe/view?usp=sharing)
 
 ## Chalenge(s)
  - Bugs on my model file
@@ -56,3 +56,14 @@ This library was used because it provides a beatiful icon pack that makes the ui
 
 ## Appetize.io link
 [Click here to test app](https://appetize.io/app/k6hnrr6diw7i2llnsmygng6vvu?device=iphone14promax&osVersion=16.0&scale=75)
+
+
+## Screenshots
+<img width="393" alt="Screenshot 2022-11-12 at 5 27 44 PM" src="https://user-images.githubusercontent.com/104990430/201484261-50276e30-d4ba-4075-a80e-0bbfa320f20a.png">
+<img width="393" alt="Screenshot 2022-11-12 at 5 27 54 PM" src="https://user-images.githubusercontent.com/104990430/201484270-ba66286e-90a6-4dfc-af92-7c4baf3ee77a.png">
+<img width="393" alt="Screenshot 2022-11-12 at 5 28 03 PM" src="https://user-images.githubusercontent.com/104990430/201484277-45c830ee-87f9-4497-8cb6-7240dbe23a66.png">
+<img width="393" alt="Screenshot 2022-11-12 at 5 28 13 PM" src="https://user-images.githubusercontent.com/104990430/201484283-47ff660c-dd36-4f5b-9e3e-5709f2d28141.png">
+<img width="393" alt="Screenshot 2022-11-12 at 5 28 22 PM" src="https://user-images.githubusercontent.com/104990430/201484285-29990a36-571e-482c-bc84-4942035c1919.png">
+<img width="393" alt="Screenshot 2022-11-12 at 5 28 36 PM" src="https://user-images.githubusercontent.com/104990430/201484286-09972d78-a4f3-4fa9-90bd-c97c49f6800a.png">
+<img width="393" alt="Screenshot 2022-11-12 at 5 29 05 PM" src="https://user-images.githubusercontent.com/104990430/201484288-0d40ba82-3790-4b0e-864b-ba535553c614.png">
+

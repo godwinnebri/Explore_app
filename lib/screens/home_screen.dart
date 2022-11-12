@@ -1,6 +1,8 @@
 import 'package:explore_app_1/colors/app_colors.dart';
 import 'package:explore_app_1/core/api_provider.dart';
 import 'package:explore_app_1/screens/detail_scren.dart';
+import 'package:explore_app_1/screens/language_filter.dart';
+import 'package:explore_app_1/screens/region_filter.dart';
 import 'package:explore_app_1/widgets/filter_container.dart';
 import 'package:explore_app_1/widgets/search.dart';
 import 'package:explore_app_1/widgets/texts/apptext.dart';
@@ -76,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const Gap(h: 30),
 
                   //search
-                  SearchInput(
+                  const SearchInput(
                     hintText: 'Search country',
                     //onChanged: searchCountries,
                   ),
@@ -84,12 +86,36 @@ class _HomeScreenState extends State<HomeScreen> {
                   const Gap(h: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      //language
-                      Filter(filterText: 'EN', icon: Iconsax.global),
+                    children: [
+                      //language filter
+                      InkWell(
+                          onTap: () {
+                            showModalBottomSheet(
+                                context: context,
+                                builder: (context) => LanguageFilterModal(() {
+                                      setState(() {
+                                        //do something
+                                      });
+                                      Navigator.pop(context);
+                                    }));
+                          },
+                          child: const Filter(
+                              filterText: 'EN', icon: Iconsax.global)),
 
-                      //filter
-                      Filter(filterText: 'Filter', icon: Iconsax.filter)
+                      //region filter
+                      InkWell(
+                          onTap: () {
+                            showModalBottomSheet(
+                                context: context,
+                                builder: (context) => RegionFilterModal(() {
+                                      setState(() {
+                                        //do something
+                                      });
+                                      Navigator.pop(context);
+                                    }));
+                          },
+                          child: const Filter(
+                              filterText: 'Filter', icon: Iconsax.filter))
                     ],
                   ),
                   const Gap(h: 12),

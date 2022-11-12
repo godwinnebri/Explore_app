@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
@@ -24,13 +23,12 @@ class ApiProvider extends ChangeNotifier {
     );
     if (response.statusCode == 200) {
       loading = false;
-      var res = jsonDecode(response.body);
       countryList = countryApiModelFromJson(response.body);
-      print(response.body.toString());
+      log(response.body.toString());
       notifyListeners();
       return true;
     } else {
-      print(response.body.toString());
+      log(response.body.toString());
       loading = false;
       notifyListeners();
       return false;

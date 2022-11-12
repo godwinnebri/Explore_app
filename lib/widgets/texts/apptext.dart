@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class AppText extends StatelessWidget {
   const AppText(
       {required this.text,
-      //  this.color = Colors.black,
+      this.color,
       this.size = 16,
       this.weight = FontWeight.normal});
 
   final String text;
-  //final Color color;
+  final Color? color;
   final double size;
   final FontWeight weight;
 
@@ -19,7 +19,7 @@ class AppText extends StatelessWidget {
         text,
         style: TextStyle(
             fontFamily: 'Axiforma',
-            // color: color,
+            color: color,
             fontSize: size,
             fontWeight: weight),
       ),

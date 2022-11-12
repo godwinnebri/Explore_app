@@ -17,6 +17,8 @@ dependencies:
   provider: ^6.0.4
   card_swiper: ^2.0.4
   iconsax: ^0.0.8
+  accordion: ^2.5.1
+
 
 dev_dependencies:
   flutter_test:

@@ -31,6 +31,7 @@ class _MyAppState extends State<MyApp> {
       providers: AppProviders.providers,
       child: MaterialApp(
         theme: ThemeData.light().copyWith(
+          primaryColor: AppColors.primaryColor,
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,
             iconTheme: IconThemeData(color: AppColors.grey900),
@@ -38,7 +39,10 @@ class _MyAppState extends State<MyApp> {
           ),
           scaffoldBackgroundColor: Colors.white,
         ),
-        darkTheme: ThemeData.dark(),
+        darkTheme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: Color(0xff000F24),
+          primaryColor: AppColors.primaryColor,
+        ),
         //themeMode: ThemeMode.dark,
         themeMode: currentTheme.currentTheme(),
         debugShowCheckedModeBanner: false,

@@ -4,12 +4,12 @@
 
 import 'dart:convert';
 
-List<CountryApiModel> countryApiModelFromJson(String str) =>
-    List<CountryApiModel>.from(
-        json.decode(str).map((x) => CountryApiModel.fromJson(x)));
+List<CountryModel> countryApiModelFromJson(String str) =>
+    List<CountryModel>.from(
+        json.decode(str).map((x) => CountryModel.fromJson(x)));
 
-class CountryApiModel {
-  CountryApiModel({
+class CountryModel {
+  CountryModel({
     this.name,
     this.tld,
     this.cca2,
@@ -79,8 +79,7 @@ class CountryApiModel {
   CapitalInfo? capitalInfo;
   PostalCode? postalCode;
 
-  factory CountryApiModel.fromJson(Map<String, dynamic> json) =>
-      CountryApiModel(
+  factory CountryModel.fromJson(Map<String, dynamic> json) => CountryModel(
         name: json["name"] == null ? null : Name.fromJson(json["name"]),
         tld: json["tld"] == null
             ? null

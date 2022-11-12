@@ -8,12 +8,12 @@ import '../models/country_model.dart';
 
 class ApiProvider extends ChangeNotifier {
   bool loading = false;
-  List<CountryApiModel> countryList = [];
+  List<CountryModel> countryList = [];
 
   Future<bool> fetchCountries() async {
     loading = true;
     http.Response response;
-    log("fetching application called");
+    log("fetching countries");
 
     response = await http.get(
       Uri.parse("https://restcountries.com/v3.1/all"),

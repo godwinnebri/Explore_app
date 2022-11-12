@@ -12,7 +12,7 @@ class Filter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       // height: 40,
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.grey25, width: 1),
@@ -23,7 +23,7 @@ class Filter extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icon),
-          Gap(w: 10),
+          const Gap(w: 10),
           AppText(
             text: filterText,
           )

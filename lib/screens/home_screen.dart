@@ -1,6 +1,7 @@
 import 'package:explore_app_1/colors/app_colors.dart';
 import 'package:explore_app_1/core/api_provider.dart';
 import 'package:explore_app_1/screens/detail_scren.dart';
+import 'package:explore_app_1/screens/language_filter.dart';
 import 'package:explore_app_1/screens/region_filter.dart';
 import 'package:explore_app_1/widgets/filter_container.dart';
 import 'package:explore_app_1/widgets/search.dart';
@@ -77,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const Gap(h: 30),
 
                   //search
-                  SearchInput(
+                  const SearchInput(
                     hintText: 'Search country',
                     //onChanged: searchCountries,
                   ),
@@ -87,22 +88,33 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       //language filter
-                      Filter(filterText: 'EN', icon: Iconsax.global),
-
-                      //region filter
                       InkWell(
                           onTap: () {
                             showModalBottomSheet(
                                 context: context,
-                                builder: (context) =>
-                                    RegionFilterModal((newTaskTitle) {
+                                builder: (context) => LanguageFilterModal(() {
                                       setState(() {
                                         //do something
                                       });
                                       Navigator.pop(context);
                                     }));
                           },
-                          child: Filter(
+                          child: const Filter(
+                              filterText: 'EN', icon: Iconsax.global)),
+
+                      //region filter
+                      InkWell(
+                          onTap: () {
+                            showModalBottomSheet(
+                                context: context,
+                                builder: (context) => RegionFilterModal(() {
+                                      setState(() {
+                                        //do something
+                                      });
+                                      Navigator.pop(context);
+                                    }));
+                          },
+                          child: const Filter(
                               filterText: 'Filter', icon: Iconsax.filter))
                     ],
                   ),

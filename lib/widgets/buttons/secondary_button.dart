@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:explore_app_1/colors/app_colors.dart';
 import 'package:explore_app_1/theme/theme_config.dart';
 import 'package:flutter/material.dart';

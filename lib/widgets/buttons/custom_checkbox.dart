@@ -1,6 +1,5 @@
 import 'package:explore_app_1/colors/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
 class CustomCheckbox extends StatefulWidget {
   const CustomCheckbox({

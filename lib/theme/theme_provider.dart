@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:explore_app_1/theme/theme_config.dart';
 import 'package:flutter/material.dart';
 
@@ -14,9 +16,9 @@ class MyTheme extends ChangeNotifier {
     notifyListeners();
 
     if (_isDark == true) {
-      print('dark active');
+      log('dark active');
     } else {
-      print('light active');
+      log('light active');
     }
   }
 }

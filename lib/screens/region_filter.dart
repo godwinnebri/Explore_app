@@ -88,7 +88,7 @@ class _RegionFilterModalState extends State<RegionFilterModal> {
                                       AppColors.grey100.withOpacity(0.0),
                                   headerBackgroundColor:
                                       darkActive ? Colors.white : AppColors.bg,
-                                  rightIcon: const Icon(Iconsax.arrow_up_2),
+                                  rightIcon: const Icon(Iconsax.arrow_down_1),
                                   paddingListHorizontal: 0.0,
                                   headerPadding: const EdgeInsets.symmetric(
                                     vertical: 0,
@@ -164,7 +164,7 @@ class _RegionFilterModalState extends State<RegionFilterModal> {
                                       AppColors.grey100.withOpacity(0.0),
                                   headerBackgroundColor:
                                       darkActive ? Colors.white : AppColors.bg,
-                                  rightIcon: const Icon(Iconsax.arrow_up_2),
+                                  rightIcon: const Icon(Iconsax.arrow_down_1),
                                   paddingListHorizontal: 0.0,
                                   headerPadding: const EdgeInsets.symmetric(
                                     vertical: 0,

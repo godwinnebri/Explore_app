@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List alpha = [
+    List countrySorting = [
       'A',
       'B',
       'C',
@@ -95,134 +95,138 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
           child: Column(
             children: [
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //logo
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: const [
-                          Text('Explore',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontFamily: 'ElsieSwashCaps',
-                                  fontWeight: FontWeight.w900)),
-                          Text('.',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: AppColors.primaryColor,
-                                  fontWeight: FontWeight.w900)),
-                        ],
-                      ),
+              Expanded(
+                flex: 0,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        //logo
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: const [
+                            Text('Explore',
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    fontFamily: 'ElsieSwashCaps',
+                                    fontWeight: FontWeight.w900)),
+                            Text('.',
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    color: AppColors.primaryColor,
+                                    fontWeight: FontWeight.w900)),
+                          ],
+                        ),
 
-                      //theme switch
-                      InkWell(
-                        onTap: () {
-                          currentTheme.switchTheme();
-                        },
-                        child: darkActive
-                            ? const Icon(Iconsax.sun_1)
-                            : const Icon(Iconsax.moon),
-                      )
-                    ],
-                  ),
-                  const Gap(h: 30),
+                        //theme switch
+                        InkWell(
+                          onTap: () {
+                            currentTheme.switchTheme();
+                          },
+                          child: darkActive
+                              ? const Icon(Iconsax.sun_1)
+                              : const Icon(Iconsax.moon),
+                        )
+                      ],
+                    ),
+                    const Gap(h: 30),
 
-                  //search
-                  // const SearchInput(
-                  //   hintText: 'Search country',
-                  //   //onChanged: searchCountries,
-                  // ),
+                    //search
+                    // const SearchInput(
+                    //   hintText: 'Search country',
+                    //   //onChanged: searchCountries,
+                    // ),
 
-                  TextField(
-                    controller: searchController,
-                    textAlign: TextAlign.center,
-                    // style:
-                    //     TextStyle(color: darkActive ? AppColors.grey100 : AppColors.grey900),
-                    onChanged: (string) {
-                      _debouncer.run(() {
-                        setState(() {
-                          country = temp
-                              .where(
-                                (u) => (u.name!.common!.toLowerCase().contains(
-                                      string.toLowerCase(),
-                                    )),
-                              )
-                              .toList();
+                    TextField(
+                      controller: searchController,
+                      textAlign: TextAlign.center,
+                      // style:
+                      //     TextStyle(color: darkActive ? AppColors.grey100 : AppColors.grey900),
+                      onChanged: (string) {
+                        _debouncer.run(() {
+                          setState(() {
+                            country = temp
+                                .where(
+                                  (u) =>
+                                      (u.name!.common!.toLowerCase().contains(
+                                            string.toLowerCase(),
+                                          )),
+                                )
+                                .toList();
+                          });
                         });
-                      });
-                    },
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(
-                        Iconsax.search_normal_1,
-                        color: AppColors.grey500,
-                      ),
-                      filled: true,
-                      fillColor: darkActive
-                          ? const Color(0xff98A2B3).withOpacity(0.2)
-                          : AppColors.grey100,
-                      hintText: 'Search country',
-                      border: InputBorder.none,
-                      hintStyle: TextStyle(
-                          color: darkActive
-                              ? AppColors.grey500
-                              : AppColors.grey500,
-                          fontFamily: 'Axiforma'),
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 16.0, horizontal: 20.0),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.white.withOpacity(0), width: 0.0),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(4.0)),
-                      ),
-                      focusedBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: AppColors.secondaryColor, width: 1),
-                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          Iconsax.search_normal_1,
+                          color: AppColors.grey500,
+                        ),
+                        filled: true,
+                        fillColor: darkActive
+                            ? const Color(0xff98A2B3).withOpacity(0.2)
+                            : AppColors.grey100,
+                        hintText: 'Search country',
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(
+                            color: darkActive
+                                ? AppColors.grey500
+                                : AppColors.grey500,
+                            fontFamily: 'Axiforma'),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 16.0, horizontal: 20.0),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Colors.white.withOpacity(0), width: 0.0),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(4.0)),
+                        ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: AppColors.secondaryColor, width: 1),
+                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                        ),
                       ),
                     ),
-                  ),
 
-                  const Gap(h: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //language filter
-                      InkWell(
-                          onTap: () {
-                            showModalBottomSheet(
-                                context: context,
-                                builder: (context) => LanguageFilterModal(() {
-                                      setState(() {
-                                        //do something
-                                      });
-                                      Navigator.pop(context);
-                                    }));
-                          },
-                          child: const Filter(
-                              filterText: 'EN', icon: Iconsax.global)),
+                    const Gap(h: 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        //language filter
+                        InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) => LanguageFilterModal(() {
+                                        setState(() {
+                                          //do something
+                                        });
+                                        Navigator.pop(context);
+                                      }));
+                            },
+                            child: const Filter(
+                                filterText: 'EN', icon: Iconsax.global)),
 
-                      //region filter
-                      InkWell(
-                          onTap: () {
-                            showModalBottomSheet(
-                                context: context,
-                                builder: (context) => RegionFilterModal(() {
-                                      setState(() {
-                                        //do something
-                                      });
-                                      Navigator.pop(context);
-                                    }));
-                          },
-                          child: const Filter(
-                              filterText: 'Filter', icon: Iconsax.filter))
-                    ],
-                  ),
-                  const Gap(h: 12),
-                ],
+                        //region filter
+                        InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) => RegionFilterModal(() {
+                                        setState(() {
+                                          //do something
+                                        });
+                                        Navigator.pop(context);
+                                      }));
+                            },
+                            child: const Filter(
+                                filterText: 'Filter', icon: Iconsax.filter))
+                      ],
+                    ),
+                    const Gap(h: 12),
+                  ],
+                ),
               ),
               Expanded(
                 child: apiProvider.loading

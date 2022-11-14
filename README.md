@@ -27,8 +27,16 @@ The design is built to allow users use the app easily. The design is accessible 
  - Automatic light and dark theme switching
  - Map integration to allow users explore a country virtually
  
+ 
+ 
+## Appetize.io link
+[Click here to test app](https://appetize.io/app/k6hnrr6diw7i2llnsmygng6vvu?device=iphone14promax&osVersion=16.0&scale=75)
+
+
+ 
  ## Link to APK
  [Click here to download APK file](https://drive.google.com/file/d/1Lkofys1aKaSK6lMkRAPe3kpJOjsoYfFe/view?usp=sharing)
+
 
 ## Chalenge(s)
  - Bugs on my model file
@@ -53,9 +61,6 @@ This package was used to create the carousel on the details page
 This library was used because it provides a beatiful icon pack that makes the ui of the app visually pleasing.
 [Go to iconsax Library](https://pub.dev/packages/iconsax)
 [view Iconsax library](https://pub.dev/packages/iconsax)
-
-## Appetize.io link
-[Click here to test app](https://appetize.io/app/k6hnrr6diw7i2llnsmygng6vvu?device=iphone14promax&osVersion=16.0&scale=75)
 
 
 ## Screenshots
